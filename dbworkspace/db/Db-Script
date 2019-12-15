@@ -1,0 +1,73 @@
+1.)CREATE TABLE COLLEGES (REG_NO  VARCHAR (255) PRIMARY KEY,
+                       NAME VARCHAR(255),
+                       ADDRESS VARCHAR(255));
+
+1.1)INSERT INTO COLLEGES (REG_NO , NAME , ADDRESS) 
+                  VALUES ( 'Uni001','United College of Engineering and Management ','Allahabad'),
+                         ('Bab001','Babu Banarasi Das University','Noida'),
+                         ('Sar001','Saroj institute Of Technology & Management','Lucknow'),
+                         ('Ram001','Shri Ramswaroop Memorial College of Engineering and Management ','Barabanki'),
+                         ('Aza001','Azad Institute of Engineering and Technology ','Kanpur');
+
+===========================================================================
+
+2.)CREATE TABLE COURSES (NAME VARCHAR (255), 
+                      COURSE_CODE VARCHAR(255) PRIMARY KEY,
+                      SEATS INT(5),
+                      AVAILABLE_SEATS INT( 5));
+2.1)INSERT INTO COURSES ( NAME , COURSE_CODE , SEATS , AVAILABLE_SEATS ) 
+                 VALUES ( 'BBA','BB11 ',20,20),
+                        ( 'BCA','BC12 ',30,30),
+                        ( 'B.TECH','BT13 ',40,40),
+                        ( 'M.TECH','MT14 ',25,25),
+                        ( 'MBA','MB15 ',10,10);
+
+===========================================================================
+
+3.)CREATE TABLE STUDENTS(NAME VARCHAR(255),
+                      ADDRESS VARCHAR(255),
+                      PRIMARY KEY(NAME, ADDRESS),
+                      UID VARCHAR(255),ROLL_NO VARCHAR(255),
+                      COLLEGE_CODE VARCHAR(255),
+                      COURSE_CODE VARCHAR(255), 
+                      FOREIGN KEY( COLLEGE_CODE) REFERENCES COLLEGES(REG_NO));
+
+3.1)INSERT INTO STUDENTS  ( NAME , ADDRESS , UID , ROLL_NO , COLLEGE_CODE , COURSE_CODE) 
+                   VALUES ( 'Sameer', 'Naini', 'Sa001', 'Sa012', 'Uni001', 'BB11'),
+                          ( 'Manoj', 'Alambag', 'Ma001', 'Ma012', 'Uni001','MB15'),
+                          ('Atul',  'Ruchikhand', 'At001', 'At012', 'Bab001','BC12'),
+                          ( 'Dinesh', 'Sector D', 'Di001', 'Di012', 'Bab001','MT14'),
+                          ( 'Rakesh', 'Sector M', 'Ra001', 'Ra012', 'Sar001','BT13'),
+                          ( 'Buwan', 'Transport Nagar', 'Bu001', 'Bu012', 'Sar001','MT14'),
+                          ( 'Gajendra', 'Gomti Nagar', 'Ga001', 'Ga012', 'Ram001','MT14'),
+                          ( 'Pawan', 'Indira Nagar', 'Pa001', 'Pa012', 'Ram001','BC12'),
+                          ( 'Kapil', 'Gosaiganj', 'Ka001', 'Ka012', 'Aza001', 'BB11'),
+                          ( 'Ishant', 'Chowk', 'Is001', 'Is012', 'Aza001','MB15');
+
+
+
+
+
+
+===========================================================================
+
+4.)CREATE TABLE COLLEGE_COURSE(COLLEGE_CODE VARCHAR(255),
+                               COURSE_CODE VARCHAR(255),
+                               PRIMARY KEY(COLLEGE_CODE, COURSE_CODE));
+4.1)INSERT INTO COLLEGE_COURSE ( COLLEGE_CODE  , COURSE_CODE ) 
+                            VALUES ( 'Uni001','BB11 '),
+                                           ( 'Bab001','BC12 ',),
+                                            ('Sar001' ,'BT13 '),
+                                            ( 'Ram001','MT14 '),
+                                             ( 'Aza001','MB15 '),
+                                             ( 'Aza001','BB11 '),
+                                             ( 'Ram001','BC12 '),
+                                             ( 'Sar001','BT14 '),
+                                             ( 'Bab001','MT14 '),
+                                             ( 'Uni001','MB15 ');
+===========================================================================
+
+ALTER TABLE STUDENTS
+ADD VERSION INT(5)
+
+
